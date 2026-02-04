@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Formal Request</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fcecf0 0%, #f7d9e3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Helvetica Neue', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.15);
+            text-align: center;
+            max-width: 420px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .flower-header {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            color: #c9184a;
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            color: #590d22;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            color: #8c2f39;
+            font-size: 0.9rem;
+            border-top: 1px solid #f7d9e3;
+            padding-top: 15px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            min-height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #noBtn {
+            background-color: #a4133c;
+            color: white;
+            position: absolute;
+        }
+
+        .bg-flower {
+            position: absolute;
+            opacity: 0.2;
+            font-size: 30px;
+            animation: drift 10s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(110vh) rotate(0deg); }
+            to { transform: translateY(-10vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <span class="flower-header">💐🌷✨</span>
+        <h1>This is me formally asking you to be my Valentine...</h1>
+        <p class="message">I just want to annoy you on the day of love. 😉</p>
+        
+        <div class="signature">
+            From: <strong>Umntu ka Pookie</strong><br>
+            <small>(Used to like hearing you call me that... sadly, you stopped 😔)</small>
+        </div>
+        
+        <div class="btn-group">
+            <button id="yesBtn" onclick="celebrate()">Yes, I'll allow it</button>
+            <button id="noBtn" onmouseover="moveButton()">Absolutely Not</button>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function celebrate() {
+            alert("Great choice! Prepare to be sufficiently annoyed on Feb 14th. ❤️");
+            document.body.style.backgroundColor = "#ffb3c1";
+        }
+
+        for (let i = 0; i < 15; i++) {
+            let flower = document.createElement('div');
+            flower.className = 'bg-flower';
+      
+            flower.innerHTML = '🌸';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDelay = Math.random() * 10 + 's';
+            document.body.appendChild(flower);
+        }
+    </script>
+</body>
+</html>
